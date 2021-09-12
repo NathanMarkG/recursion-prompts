@@ -7,26 +7,68 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  if (n < 0) {
+    return null;
+  }
+
+  if (n === 0) {
+    return 1;
+  }
+
+  return n * factorial(n - 1);
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  var dupicateArray = array.slice();
+
+  if (dupicateArray.length === 0) {
+    return 0;
+  }
+
+  var firstNumber = dupicateArray.shift();
+  return firstNumber + sum(dupicateArray);
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  n = Math.abs(n);
+
+  if (n === 0) {
+    return true;
+  }
+
+  if (n === 1) {
+    return false;
+  }
+
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+
+  if (n === 0) {
+    return 0;
+  }
+
+  var nextNumber = n - 1;
+  if (n < 0) {
+    nextNumber = n + 1;
+  }
+  // console.log(nextNumber);
+
+  return nextNumber + sumBelow(nextNumber);
+
 };
 
 // 6. Get the integers within a range (x, y).
@@ -47,6 +89,12 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  n = Math.abs(n);
+  if (n > 2) {
+    return powerOfTwo(n / 2);
+  }
+  console.log(n === 2);
+  return n === 2;
 };
 
 // 9. Write a function that reverses a string.
